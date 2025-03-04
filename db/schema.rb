@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_04_185321) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_04_185617) do
   create_table "actors", force: :cascade do |t|
     t.string "actor_name"
     t.datetime "created_at", null: false
@@ -24,6 +24,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_04_185321) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["episode_id"], name: "index_burgers_on_episode_id"
+  end
+
+  create_table "character_episodes", force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.integer "episode_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_character_episodes_on_character_id"
+    t.index ["episode_id"], name: "index_character_episodes_on_episode_id"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -56,6 +65,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_04_185321) do
   end
 
   add_foreign_key "burgers", "episodes"
+  add_foreign_key "character_episodes", "characters"
+  add_foreign_key "character_episodes", "episodes"
   add_foreign_key "characters", "actors"
   add_foreign_key "stores", "episodes"
 end
