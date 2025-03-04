@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'httparty'
+
+url = 'https://bobsburgers-api.herokuapp.com/'
+response = HTTParty.get(url)
+
+response.each do |release|
+  puts release["description"]
+end
