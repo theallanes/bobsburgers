@@ -1,3 +1,3 @@
 class Episode < ApplicationRecord
-  has_many :stores, :characters
+  has_many :stores, :characters, :burgers
 end
