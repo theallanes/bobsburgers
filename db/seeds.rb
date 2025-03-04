@@ -13,5 +13,5 @@ url = 'https://bobsburgers-api.herokuapp.com/'
 response = HTTParty.get(url)
 
 response.each do |release|
-  puts release["description"]
+  puts release
 end
