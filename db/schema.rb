@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_04_180441) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_04_180820) do
   create_table "actors", force: :cascade do |t|
     t.string "actor_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "burgers", force: :cascade do |t|
+    t.string "burger_name"
+    t.integer "price"
+    t.integer "episode_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["episode_id"], name: "index_burgers_on_episode_id"
   end
 
   create_table "episodes", force: :cascade do |t|
@@ -35,5 +44,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_04_180441) do
     t.index ["episode_id"], name: "index_stores_on_episode_id"
   end
 
+  add_foreign_key "burgers", "episodes"
   add_foreign_key "stores", "episodes"
 end
