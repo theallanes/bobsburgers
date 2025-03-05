@@ -24,7 +24,8 @@ stores = HTTParty.get(store_url)
 #     description: episode["description"],
 #     air_date: episode["airDate"],
 #     season: episode["season"],
-#     episode_number: episode["episode"]
+#     episode_number: episode["episode"],
+#     url: episode["url"]
 #   )
 # end
 
@@ -53,10 +54,15 @@ stores = HTTParty.get(store_url)
 #   end
 # end
 
-burgers.each do |burger|
-  url = burger["episodeUrl"].split("/").last
-  new_burger =
+# burgers.each do |burger|
+#   url = burger["episodeUrl"].split("/").last
+#   new_burger =
 
+# end
+
+episodes.each do |ep|
+  episode = Episode.find_by(title: ep["name"])
+
+  episode.url = ep["url"]
+  episode.save
 end
-
-
