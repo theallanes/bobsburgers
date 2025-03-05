@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  get "stores/index"
-  get "stores/show"
-  get "burgers/index"
-  get "burgers/show"
-  get "episodes/index"
-  get "episodes/show"
+  resources :stores, only: [ :index, :show ]
+  resources :burgers, only: [ :index, :show ]
+  resources :episodes, only: [ :index, :show ]
   resources :characters, only: [ :index, :show ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
