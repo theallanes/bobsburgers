@@ -27,6 +27,9 @@ characters.each do |character|
   ep = Episode.find_by(title: character["firstEpisode"])
 
   ep.characters.create(
-
+    name: character["name"],
+    age: character["age"],
+    gender: character["gender"],
+    occupation: character["occupation"]
   )
 end
