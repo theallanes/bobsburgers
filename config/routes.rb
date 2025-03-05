@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "stores/index"
+  get "stores/show"
   get "burgers/index"
   get "burgers/show"
   get "episodes/index"
