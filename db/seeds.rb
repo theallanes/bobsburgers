@@ -1,4 +1,5 @@
 require 'httparty'
+require 'csv'
 
 CharacterEpisode.destroy_all
 Character.destroy_all
@@ -28,33 +29,30 @@ stores = HTTParty.get(store_url)
 # end
 
 characters.each do |character|
-  first_episode = character["firstEpisode"]
+  actor = Actor.find_or_create_by(actor_name: character["voicedBy"])
+  ep = Episode.find_by(title: character["firstEpisode"])
 
-  if first_episode.nil?
-    puts "No episode title found for character #{character["name"]}. Skipping..."
-    next
-  end
-
-  first_episode = first_episode.strip.downcase
-  ep = Episode.find_by("LOWER(title) = ?", first_episode)
-
-  if ep.nil?
-    puts "Episode not found for character #{character["name"]}"
-    next
-  end
-
-  char = Character.find_or_create_by(
-    name: character["name"],
-    age: character["age"],
-    gender: character["gender"],
-    occupation: character["occupation"]
-  )
-
-  if char.persisted?
-    CharacterEpisode.create(character: char, episode: ep)
-    puts "Character #{char.name} associated with episode #{ep.title}"
+  if actor && actor.persisted?
+    new_character = actor.characters.create(
+      name: character ["name"],
+      age: character["age"],
+      gender: character["gender"],
+      occupation: character["occupation"],
+    )
   else
-    puts "Failed to create #{character["name"]}"
+    new_character = Character.create(
+      name: character ["name"],
+      age: character["age"],
+      gender: character["gender"],
+      occupation: character["occupation"],
+    )
+  end
+
+  if new_character.persisted?
+    CharacterEpisode.create(character: new_character, episode: ep)
   end
 end
+
+puts "Created #{Actor.count} Actors"
+puts "Created #{Character.count} Characters"
 

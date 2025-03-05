@@ -365,6 +365,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   capybara
+  csv
   debug
   httparty
   importmap-rails
