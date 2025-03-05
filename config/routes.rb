@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "burgers/index"
+  get "burgers/show"
   get "episodes/index"
   get "episodes/show"
   resources :characters, only: [ :index, :show ]
