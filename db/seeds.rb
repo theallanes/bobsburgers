@@ -1,11 +1,11 @@
 require 'httparty'
 require 'csv'
 
-CharacterEpisode.destroy_all
-Character.destroy_all
+# CharacterEpisode.destroy_all
+# Character.destroy_all
 Burger.destroy_all
 Store.destroy_all
-Actor.destroy_all
+# Actor.destroy_all
 # Episode.destroy_all
 
 ep_url = 'https://bobsburgers-api.herokuapp.com/episodes'
@@ -28,31 +28,35 @@ stores = HTTParty.get(store_url)
 #   )
 # end
 
-characters.each do |character|
-  actor = Actor.find_or_create_by(actor_name: character["voicedBy"])
-  ep = Episode.find_by(title: character["firstEpisode"])
+# characters.each do |character|
+#   actor = Actor.find_or_create_by(actor_name: character["voicedBy"])
+#   ep = Episode.find_by(title: character["firstEpisode"])
 
-  if actor && actor.persisted?
-    new_character = actor.characters.create(
-      name: character ["name"],
-      age: character["age"],
-      gender: character["gender"],
-      occupation: character["occupation"],
-    )
-  else
-    new_character = Character.create(
-      name: character ["name"],
-      age: character["age"],
-      gender: character["gender"],
-      occupation: character["occupation"],
-    )
-  end
+#   if actor && actor.persisted?
+#     new_character = actor.characters.create(
+#       name: character ["name"],
+#       age: character["age"],
+#       gender: character["gender"],
+#       occupation: character["occupation"],
+#     )
+#   else
+#     new_character = Character.create(
+#       name: character ["name"],
+#       age: character["age"],
+#       gender: character["gender"],
+#       occupation: character["occupation"],
+#     )
+#   end
 
-  if new_character.persisted?
-    CharacterEpisode.create(character: new_character, episode: ep)
-  end
+#   if new_character.persisted?
+#     CharacterEpisode.create(character: new_character, episode: ep)
+#   end
+# end
+
+burgers.each do |burger|
+  url = burger["episodeUrl"].split("/").last
+  new_burger =
+
 end
 
-puts "Created #{Actor.count} Actors"
-puts "Created #{Character.count} Characters"
 
