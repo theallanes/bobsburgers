@@ -5,7 +5,7 @@ require 'httparty'
 # Burger.destroy_all
 # Store.destroy_all
 # Actor.destroy_all
-# Episode.detroy_all
+# Episode.destroy_all
 
 ep_url = 'https://bobsburgers-api.herokuapp.com/episodes'
 character_url = 'https://bobsburgers-api.herokuapp.com/characters'
@@ -26,12 +26,12 @@ end
 characters.each do |character|
   ep = Episode.find_by(title: character["firstEpisode"])
 
-  ep.characters.find_or_create_by(
+  char = ep.characters.find_or_create_by(
     name: character["name"],
     age: character["age"],
     gender: character["gender"],
     occupation: character["occupation"]
   )
 
-  CharacterEpisode.create(character: character, episode: ep)
+  CharacterEpisode.create(character: char, episode: ep)
 end
