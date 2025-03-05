@@ -1,24 +1,47 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Models
+Movie Models
+  - id (auto-increment PK)
+  - title: string
+  - year: int
+  - duration: int
+  - description: text
+  - average_vote: decimal
+  - production_company_id
+  - Will also be part of the many to many with Genre
 
-Things you may want to cover:
+Product/Company Model
+  - id
+  - name: string
 
-* Ruby version
+Genre Model
+  - id
+  - name: string
+  - Will also be part of the many to many with Movie
 
-* System dependencies
+Movie/Genre Model
+  - movie_id: int
+  - genre_id: int
 
-* Configuration
 
-* Database creation
+## Routes
 
-* Database initialization
+  GET /                           (Display the homepage)
+  GET /characters                 (Displays all the characters)
+  GET /character/:id              (Displays a single character)
+  GET /episodes                   (Displays all the episodes)
+  GET /episodes/:id               (Displays a single episode)
+  GET /burgers                    (Displays all the burgers)
+  GET /burgers/:id                (Displays a single burger)
+  GET /stores                     (Displays all the stores)
+  GET /store/:id                  (Displays a single store)
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Controllers
 
-* Deployment instructions
-
-* ...
+  Home Controller                  => index
+  Characters Controller            => index, show
+  Episodes Controller              => index, show
+  Burgers Controller               => index, show
+  Stores Controller                => index, show
