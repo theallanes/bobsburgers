@@ -62,4 +62,4 @@ burgers.each do |burger|
   )
 end
 
-puts "#{Burger.count} burgers created"
+puts "#{Store.count} burgers created"
