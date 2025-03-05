@@ -1,5 +1,6 @@
 class Episode < ApplicationRecord
-  has_many :stores, :burgers
+  has_many :stores
+  has_many :burgers
   has_many :character_episodes
   has_many :characters, through: :character_episodes
 
