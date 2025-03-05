@@ -54,15 +54,12 @@ stores = HTTParty.get(store_url)
 #   end
 # end
 
-# burgers.each do |burger|
-#   url = burger["episodeUrl"].split("/").last
-#   new_burger =
-
-# end
-
-episodes.each do |ep|
-  episode = Episode.find_by(title: ep["name"])
-
-  episode.url = ep["url"]
-  episode.save
+burgers.each do |burger|
+  ep = Episode.find_by(url: burger["episodeUrl"])
+  ep.burgers.create(
+    burger_name: burger["name"],
+    price: burger["price"]
+  )
 end
+
+puts "#{Burger.count} burgers created"
