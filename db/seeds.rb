@@ -26,12 +26,14 @@ end
 characters.each do |character|
   ep = Episode.find_by(title: character["firstEpisode"])
 
-  char = ep.characters.find_or_create_by(
+  char = Character.find_or_create_by(
     name: character["name"],
     age: character["age"],
     gender: character["gender"],
     occupation: character["occupation"]
   )
 
-  CharacterEpisode.create(character: char, episode: ep)
+  if char.persisted?
+    CharacterEpisode.create(character: char, episode: ep)
+  end
 end
