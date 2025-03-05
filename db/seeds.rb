@@ -1,17 +1,32 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 require 'httparty'
 
-url = 'https://bobsburgers-api.herokuapp.com/'
-response = HTTParty.get(url)
+# CharacterEpisode.destroy_all
+# Character.destroy_all
+# Burger.destroy_all
+# Store.destroy_all
+# Actor.destroy_all
+# Episode.detroy_all
 
-response.each do |release|
-  puts release
+ep_url = 'https://bobsburgers-api.herokuapp.com/episodes'
+character_url = 'https://bobsburgers-api.herokuapp.com/characters'
+episodes = HTTParty.get(ep_url)
+characters = HTTParty.get(character_url)
+
+
+episodes.each do |episode|
+  Episode.create(
+    title: episode["name"],
+    description: episode["description"],
+    air_date: episode["airDate"],
+    season: episode["season"],
+    episode_number: episode["episode"]
+  )
+end
+
+characters.each do |character|
+  ep = Episode.find_by(title: character["firstEpisode"])
+
+  ep.characters.create(
+
+  )
 end
