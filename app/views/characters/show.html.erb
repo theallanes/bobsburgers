@@ -1,2 +1,9 @@
 <h2><%= @character.name %></h2>
 
+<% if @character.age.present? %>
+  <p>Age: <%= @character.age %></p>
+<% end %>
+<p>Gender: <%= @character.gender %></p>
+<p>Occupation: <%= @character.occupation %></p>
+<img src="https://bobsburgers-api.herokuapp.com/images/characters/.jpg" alt="">
+

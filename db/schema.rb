@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_05_213148) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_06_001503) do
   create_table "actors", force: :cascade do |t|
     t.string "actor_name"
     t.datetime "created_at", null: false
@@ -43,6 +43,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_213148) do
     t.integer "actor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["actor_id"], name: "index_characters_on_actor_id"
   end
 
@@ -55,6 +56,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_213148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "url"
+    t.string "image"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -62,6 +64,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_213148) do
     t.integer "episode_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["episode_id"], name: "index_stores_on_episode_id"
   end
 
