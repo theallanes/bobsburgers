@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :home, only: [ :index ]
+  root to: "home#index"
   resources :stores, only: [ :index, :show ]
   resources :burgers, only: [ :index, :show ]
   resources :episodes, only: [ :index, :show ]
