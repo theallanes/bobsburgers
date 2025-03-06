@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
   def index
-    @characters = Character.includes(:episodes).order("name ASC").limit(100)
+    @characters = Character.order("name ASC").limit(100)
   end
 
   def show
