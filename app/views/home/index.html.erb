@@ -8,7 +8,7 @@
   <% @characters.each do |character| %>
     <div class="cell">
       <div class="m-3 has-text-centered">
-        <p class="title is-6"><%= link_to character.name, character %></p>
+        <p class="title is-6"><%= link_to character.name, character, :class => "has-text-white" %></p>
         <img src="<%= character.image %>" alt="<%= character.name %>" height="100">
       </div>
     </div>
@@ -20,7 +20,7 @@
 <div class="grid">
   <% @episodes.each do |episode| %>
     <div class="cell">
-      <li class="title is-6 has-text-white">Season <%=episode.season%> Ep <%=episode.episode_number%> - <%= link_to episode.title, episode %></li>
+      <li class="title is-6">Season <%=episode.season%> Ep <%=episode.episode_number%> - <%= link_to episode.title, episode %></li>
     </div>
   <% end %>
 </div>
