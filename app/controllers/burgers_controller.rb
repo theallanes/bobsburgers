@@ -1,9 +1,9 @@
 class BurgersController < ApplicationController
   def index
-    @burgers = Burger.order("id ASC").limit(100)
+    @burgers = Burger.page(params[:page]).per(30).order("id ASC")
   end
 
   def show
-    @burger = Burger.find(params[:id])
+    @burger = Burger.includes(:episode).find(params[:id])
   end
 end
