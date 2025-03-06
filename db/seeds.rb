@@ -24,7 +24,8 @@ episodes.each do |episode|
     air_date: episode["airDate"],
     season: episode["season"],
     episode_number: episode["episode"],
-    url: episode["url"]
+    url: episode["url"],
+    image: episode["image"]
   )
 end
 
@@ -38,6 +39,7 @@ characters.each do |character|
       age: character["age"],
       gender: character["gender"],
       occupation: character["occupation"],
+      image: character["image"]
     )
   else
     new_character = Character.create(
@@ -45,6 +47,7 @@ characters.each do |character|
       age: character["age"],
       gender: character["gender"],
       occupation: character["occupation"],
+      image: character["image"]
     )
   end
 
@@ -64,7 +67,10 @@ end
 stores.each do |store|
   ep = Episode.find_by(url: store["episodeUrl"])
   ep.stores.create(
-    store_name: store["name"]
+    store_name: store["name"],
+    image: store["image"]
   )
 end
+
+
 
