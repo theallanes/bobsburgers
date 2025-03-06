@@ -1,2 +1,19 @@
-<h1>Actors#index</h1>
-<p>Find me in app/views/actors/index.html.erb</p>
+<h2 class="title is-2">Voice Actors</h1>
+<div class="columns">
+  <div class="column">
+  <% @actors.each do |actor| %>
+    <ul>
+      <li class="title is-6 m-3"><%= link_to actor.actor_name, actor%></li>
+    </ul>
+  <% end %>
+  </div>
+
+  <div class="column">
+    <%= image_tag "bobs-burgers.jpg", alt: "Bob's family"%>
+  </div>
+</div>
+
+
+<nav class="pagination is-centered" aria-label="pagination">
+  <%= paginate @actors %>
+</nav>

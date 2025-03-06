@@ -1,6 +1,6 @@
 class ActorsController < ApplicationController
   def index
-    @actors = Actor.page(params[:page]).per(20).order("actor_name ASC")
+    @actors = Actor.page(params[:page]).per(10).order("actor_name ASC")
   end
 
   def show
