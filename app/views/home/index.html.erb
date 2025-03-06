@@ -45,10 +45,20 @@
 
 <div class="grid">
   <% @stores.each do |store| %>
-    <div class="cell is-gap-4">
-      <div class="m-3 has-text-centered">
-        <p class="title is-6"><%= store.store_name %></p>
-        <img src="<%= store.image %>" alt="<%= store.store_name %>" height="100">
+    <div class="cell">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-3by2">
+            <img src="<%= store.image %>" alt="<%= store.store_name %>">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4"><%= link_to store.store_name, store, :class =>"title is-4" %></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>
