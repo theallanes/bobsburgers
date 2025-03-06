@@ -1,6 +1,6 @@
 class BurgersController < ApplicationController
   def index
-    @burgers = Burger.page(params[:page]).per(30).order("id ASC")
+    @burgers = Burger.page(params[:page]).per(20).order("burger_name ASC")
   end
 
   def show

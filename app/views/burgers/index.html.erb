@@ -1,2 +1,11 @@
-<h1>Burgers#index</h1>
-<p>Find me in app/views/burgers/index.html.erb</p>
+<h2 class="title is-2">Burger of the Day</h2>
+
+<% @burgers.each do |burger| %>
+  <ul>
+    <li class="title is-6 m-3"><%= burger.burger_name %> <em class="has-text-grey">featured in episode <%= link_to burger.episode.title, burger.episode%></em></li>
+  </ul>
+<% end %>
+
+<nav class="pagination">
+  <%= paginate @burgers %>
+</nav>
