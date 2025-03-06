@@ -1,9 +1,9 @@
 class StoresController < ApplicationController
   def index
-    @stores = Store.order("id ASC").limit(50)
+    @stores = Store.page(params[:page]).per(16).order("id ASC")
   end
 
   def show
-    @store = Store.find(params[:id])
+    @store = Store.includes(:episode).find(params[:id])
   end
 end

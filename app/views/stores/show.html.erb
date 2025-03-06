@@ -1,2 +1,10 @@
-<h2><%= @store.store_name %></h2>
+<div class="has-text-centered">
+  <h2 class="title is-2"><%= @store.store_name %></h2>
+  <p class="subtitle is-4 m-3">Season <%= @store.episode.season %> Episode <%= @store.episode.episode_number %></p>
+  <p class="subtitle is-4">Episode Title: <%= link_to @store.episode.title, @store.episode %></p>
+
+  <img src="<%= @store.image %>" alt="<%= @store.store_name %>" width="500px" height="500px">
+</div>
+
+
 
