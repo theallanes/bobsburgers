@@ -2,14 +2,31 @@
   <h1 class="title is-1">Bob's Burgers 🍔</h1>
 </div>
 
-<h3 class="title is-3"><%= link_to "Characters", characters_path %></h3>
+<nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+  <ul>
+    <li class="is-active"><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+</nav>
+
+<h3 class="title is-3 has-text"><%= link_to "Characters", characters_path %></h3>
 
 <div class="grid">
   <% @characters.each do |character| %>
     <div class="cell">
-      <div class="m-3 has-text-centered">
-        <p class="title is-6"><%= link_to character.name, character, :class => "has-text-white" %></p>
-        <img src="<%= character.image %>" alt="<%= character.name %>" height="100">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by5">
+            <img src="<%= character.image %>" alt="<%= character.name %>">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4"><%= link_to character.name, character, :class =>"title is-4" %></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>
@@ -20,7 +37,17 @@
 <div class="grid">
   <% @episodes.each do |episode| %>
     <div class="cell">
-      <li class="title is-6">Season <%=episode.season%> Ep <%=episode.episode_number%> - <%= link_to episode.title, episode %></li>
+      <div class="card">
+        <div class="card-content">
+          <ul>
+          <div class="media">
+            <div class="media-content">
+              <li class="title is-6">Season <%=episode.season%> Ep <%=episode.episode_number%> : <%= link_to episode.title, episode %></li>
+            </div>
+          </div>
+          </ul>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
@@ -44,7 +71,7 @@
   <div class="column">
     <ul class="ml-5">
       <% @burgers.each do |burger| %>
-        <li class="title is-6 has-text-white"><%= burger.burger_name %></li>
+        <li class="title is-6 has-text-black"><%= burger.burger_name %></li>
       <% end %>
     </ul>
   </div>
