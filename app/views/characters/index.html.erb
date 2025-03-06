@@ -1,7 +1,16 @@
-<h2>Bob's Burgers Characters</h2>
+<div class="m-3 has-text-centered">
+  <h1 class="title is-1"><%= link_to "Bob's Burgers 🍔", root_path %></h1>
+</div>
 
-<ul>
-  <% @characters.each do |character|%>
-  <li><%= link_to character.name, character %></li>
+<h2 class="title is-2">All Characters:</h2>
+
+<div class="grid">
+  <% @characters.each do |character| %>
+    <div class="cell">
+      <div class="m-3 has-text-centered">
+        <p class="title is-6"><%= link_to character.name, character %></p>
+        <img src="<%= character.image %>" alt="<%= character.name %>" height="100">
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>

@@ -1,9 +1,26 @@
-<h2><%= @character.name %></h2>
+<div class="m-3 has-text-centered">
+  <h1 class="title is-1"><%= link_to "Bob's Burgers 🍔", root_path %></h1>
+</div>
 
-<% if @character.age.present? %>
-  <p>Age: <%= @character.age %></p>
-<% end %>
-<p>Gender: <%= @character.gender %></p>
-<p>Occupation: <%= @character.occupation %></p>
-<img src=<%= @character.image %> alt="">
+<h3 class="title is-3 m-3"><%= @character.name %></h2>
 
+<div class="columns">
+  <div class="column m-5">
+    <% if @character.age.present? %>
+      <p class="subtitle is-4">Age: <%= @character.age %></p>
+    <% end %>
+    <p class="subtitle is-4">Gender: <%= @character.gender %></p>
+
+    <% if @character.occupation.present? %>
+      <p class="subtitle is-4">Occupation: <%= @character.occupation %></p>
+    <% else %>
+      <p class="subtitle is-4">Occupation: Unknown</p>
+    <% end %>
+
+    <p>Voice Actor: <%= @actor.title%></p>
+
+  </div>
+  <div class="column">
+    <img src=<%= @character.image %> alt="<% @character.name %>" width="200" height="200">
+  </div>
+</div>
