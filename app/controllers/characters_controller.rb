@@ -1,9 +1,9 @@
 class CharactersController < ApplicationController
   def index
-    @characters = Character.includes(:actors).order("name ASC").limit(100)
+    @characters = Character.includes(:episodes).order("name ASC").limit(100)
   end
 
   def show
-    @character = Character.find(params[:id])
+    @character = Character.includes(:episodes, :actor).find(params[:id])
   end
 end

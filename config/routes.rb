@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get "actors/index"
-  get "actors/show"
   root to: "home#index"
+  resources :actors, only: [ :index, :show ]
   resources :stores, only: [ :index, :show ]
   resources :burgers, only: [ :index, :show ]
   resources :episodes, only: [ :index, :show ]

@@ -17,7 +17,12 @@
       <p class="subtitle is-4">Occupation: Unknown</p>
     <% end %>
 
-    <p>Voice Actor: <%= @actor.title%></p>
+    <p class="subtitle is-4">Voice Actor: <%= link_to @character.actor.actor_name, @character.actor%></p>
+
+    <%= @character.episodes.each do |episode| %>
+      <p class="subtitle is-4">First featured episode: <%= link_to episode.title, @character.episode%></p>
+    <% end %>
+
 
   </div>
   <div class="column">
