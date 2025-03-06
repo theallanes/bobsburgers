@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
   def index
-    @characters = Character.order("name ASC").limit(100)
+    @characters = Character.page(params[:page]).per(30).order("name ASC")
   end
 
   def show
