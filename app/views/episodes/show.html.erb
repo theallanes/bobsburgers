@@ -1,5 +1,7 @@
-<h2><%= @episode.title %></h2>
+<h2 class= "title is-2"><%= @episode.title %></h2>
 
-<p>Description: <%= @episode.description %></p>
-<p>Air Date: <%= @episode.air_date%></p>
-<p>Season: <%= @episode.season %> Episode: <%=@episode.episode_number%></p>
+<div class="ml-5">
+  <h4 class = "title is-4">Season: <%= @episode.season %> Episode: <%=@episode.episode_number%></h4>
+  <p class="subtitle is-4 mr-6 mt-3 pr-6"><strong>Description:</strong> <br> <%= @episode.description %></p>
+  <p class="subtitle is-4"><strong>Air Date: </strong><%= @episode.air_date%></p>
+</div>
