@@ -1,9 +1,9 @@
 class ActorsController < ApplicationController
   def index
-    @actors = Actor.order("actor_name ASC").limit(100)
+    @actors = Actor.page(params[:page]).per(20).order("actor_name ASC")
   end
 
   def show
-    @actor = Actor.find(params[:id])
+    @actor = Actor.includes(:characters).find(params[:id])
   end
 end
