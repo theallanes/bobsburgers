@@ -3,9 +3,19 @@
 <div class="grid">
   <% @characters.each do |character| %>
     <div class="cell">
-      <div class="m-3 has-text-centered">
-        <p class="title is-6"><%= link_to character.name, character %></p>
-        <img src="<%= character.image %>" alt="<%= character.name %>" height="100">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by5">
+            <img src="<%= character.image %>" alt="<%= character.name %>">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4"><%= link_to character.name, character, :class =>"title is-4" %></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>
