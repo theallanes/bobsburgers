@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "home#index"
+  get 'about', to: 'about#index'
   resources :about, only: [ :index ]
   resources :actors, only: [ :index, :show ]
   resources :stores, only: [ :index, :show ]
